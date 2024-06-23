@@ -8,9 +8,10 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Reastaurant from "./components/Restaurant";
 
+
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="app bg-gray-50">
       <Header />
       <Outlet/>
     </div>

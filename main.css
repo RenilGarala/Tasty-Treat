@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -21,10 +25,7 @@
   list-style-type: none;
   font-size: larger;
 }
-body {
-  padding-right: 50px;
-  padding-left: 50px;
-}
+
 /* .body{
     border: 1px solid black;
 } */
@@ -83,18 +84,7 @@ body {
   flex-wrap: wrap;
   gap: 53px;
 }
-.search {
-  background-color: rgb(234, 233, 233);
-  padding: 10px;
-  margin-top: 25px;
-  width: 180%;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  padding-left: 20px;
-  font-family: sans-serif;
-  border: none;
-  font-size: large;
-}
+
 .search:hover,
 .res-filter:hover,.res-card:hover  {
   box-shadow: 2px 2px 2px 2px rgba(146, 146, 146, 0.75);
@@ -102,17 +92,7 @@ body {
 .body-search{
   display: flex;
 }
-.searchbtn{
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border:none;
-  margin-top: 25px;
-  background-color: rgb(204, 204, 204);;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: 10px;
-  font-size: medium;
-}
+
 .searchbtn:active{
   background-color: rgb(232, 232, 232);;
 
@@ -136,42 +116,23 @@ body {
   font-family: sans-serif;
   font-size: large;
 }
-.shimmer{
-  background-color: rgb(200, 200, 200);
-  height: 350px;
-  width: 220px;
-  border-radius: 10px;
-  margin-top: 40px;
-  animation: blink 2s infinite;
-}
-.shimmer-container{
-  display: flex;
-  gap: 53px;
-  flex-wrap: wrap;
-}
+
+
 @keyframes blink {
   0%, 100% {
     opacity: 0.8;
 }
 50% {
-    opacity: 0.4;
+    opacity: 0.2;
 }
 }
 
 
-.login-btn{
-  padding: 0 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: medium;
-  cursor: pointer;
-  background-color: rgb(204, 204, 204);
-}
-.login-btn:active{
-  background-color: rgb(232, 232, 232);
-}
+
+
 .headerlink {
   color: black;
   text-decoration: none;
 }
+
+

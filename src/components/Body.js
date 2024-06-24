@@ -19,10 +19,12 @@ const Body = () => {
 
       const json = await data.json();
 
+      //store api data into reslist
       setResList(
         json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
       );
+      //store same data into filteredRestaurant
       setfilteredRestaurant(
         json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants
@@ -82,7 +84,6 @@ const Body = () => {
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
-            {" "}
             <Restaurantcard resdata={restaurant.info} />
           </Link>
         ))}

@@ -1,25 +1,13 @@
 import { useEffect, useState } from "react"; //Named exports are specific functions, objects, or variables that are exported from a module.
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MANU_API } from "../utils/constant";
+import useRestaurantManu from "../utils/useRestaurantManu"
+
 
 const Reastaurant = () => {
-  const [resinfo, setResInfo] = useState(null);
 
   const { resId } = useParams();
-
-  console.log("a");
-  useEffect(() => {
-    fetchmenu();
-  }, []);
-
-  const fetchmenu = async () => {
-    const data = await fetch(
-      MANU_API + resId + "&catalog_qa=undefined&submitAction=ENTER"
-    );
-    const json = await data.json();
-    setResInfo(json?.data);
-  };
+  const resinfo = useRestaurantManu(resId);
 
   const cardInfo = resinfo?.cards[2].card.card.info;
   const itemcards =
@@ -32,16 +20,7 @@ const Reastaurant = () => {
     return <Shimmer />;
   }
   console.log(cardInfo);
-  const {
-    name,
-    cuisines,
-    costForTwoMessage,
-    city,
-    avgRating,
-    areaName,
-    avgRatingString,
-    veg
-  } = cardInfo;
+  const {name,cuisines,costForTwoMessage,city,avgRating,areaName,veg} = cardInfo;
 
   console.log(itemcards);
 
@@ -91,14 +70,14 @@ const Reastaurant = () => {
         </div>
       </div>
 
-      <div className="list-disc list-inside mt-4 w-11/12 grid align-middle justify-center items-center">
+      <div className="list-disc list-inside mt-4 w-auto grid align-middle justify-center items-center">
         <div className=" font-medium text-2xl flex justify-center pb-5 border-b-2 mb-5">
           Menu
         </div>
         {/* Uncomment the lines below if the items exist in the itemcards.carousel array */}
         {/* <li>{itemcards.carousel[0].dish.info.name}</li>
         <li>{itemcards.carousel[1].dish.info.name}</li> */}
-        {itemcards?.map((item, index) => (
+        {itemcards?.map((item) => (
           <div
             key={item?.card?.info?.id || item?.dish?.info?.id}
             className="text-sm text-gray-700 mb-5"
@@ -113,7 +92,7 @@ const Reastaurant = () => {
                 />
               </div>
 
-              <div className="md:w-2/3 flex flex-col gap-2">
+              <div className="md:w-2/3 flex flex-col gap-2 w-96">
                 <div className="flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

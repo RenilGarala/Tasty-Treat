@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { LOGO_URL } from "../utils/constant";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Log IN");
 
-  return (
+  const onlineStatus =useOnlineStatus();
+
+  return onlineStatus ?  (
     <div className="flex justify-between items-center py-6 px-16 p p-4 bg-white shadow-md shadow-red-100">
     <div className="flex items-center">
       {/* <img className="h-8 w-8 mr-2" src={LOGO_URL} alt="Logo" /> */}
@@ -31,7 +34,7 @@ const Header = () => {
     </div>
   </div>
   
-  );
+  ) : <div></div>
 };
 
 export default Header;

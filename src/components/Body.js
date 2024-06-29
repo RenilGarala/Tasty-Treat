@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Restaurantcard from "./ReataurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -34,6 +35,16 @@ const Body = () => {
     }
   };
 
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <div className="h-screen grid justify-center text-center align-middle">
+        <div>"Online Status : 🔴"</div>
+        <div>Now You are Offline Please Check Your Connection</div>
+      </div>
+    );
+
   if (resList.length === 0) {
     return (
       <div>
@@ -41,6 +52,7 @@ const Body = () => {
       </div>
     );
   }
+
   return (
     <div className=" body px-32 ">
       <div className="body-header">

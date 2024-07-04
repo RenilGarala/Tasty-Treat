@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"; //Named exports are specific functions, objects, or variables that are exported from a module.
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import useRestaurantManu from "../utils/useRestaurantManu"
-
+import useRestaurantManu from "../utils/useRestaurantManu";
+import ReastaurantCategory from "./RestaurantCategory";
 
 const Reastaurant = () => {
-
   const { resId } = useParams();
   const resinfo = useRestaurantManu(resId);
 
@@ -16,13 +15,19 @@ const Reastaurant = () => {
     resinfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card
       .carousel; //itemCards       carousel
 
+  const categories =
+    resinfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+      (c) =>
+        c.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
   if (!cardInfo) {
     return <Shimmer />;
   }
-  console.log(cardInfo);
-  const {name,cuisines,costForTwoMessage,city,avgRating,areaName,veg} = cardInfo;
 
-  console.log(itemcards);
+  const { name, cuisines, costForTwoMessage, city, avgRating, areaName, veg } =
+    cardInfo;
 
   return (
     <div className="grid grid-cols-1 gap-4 justify-center items-center p-4 pt-14 px-80">
@@ -65,7 +70,7 @@ const Reastaurant = () => {
         <div className="flex items-center mb-4">
           <div className="w-2 h-2 rounded-full bg-gray-400 mr-2"></div>
           <span className="text-gray-800">
-            {veg? "Veg":"Non Veg"} Restaurant
+            {veg ? "Veg" : "Non Veg"} Restaurant
           </span>
         </div>
       </div>
@@ -74,62 +79,14 @@ const Reastaurant = () => {
         <div className=" font-medium text-2xl flex justify-center pb-5 border-b-2 mb-5">
           Menu
         </div>
-        {/* Uncomment the lines below if the items exist in the itemcards.carousel array */}
-        {/* <li>{itemcards.carousel[0].dish.info.name}</li>
-        <li>{itemcards.carousel[1].dish.info.name}</li> */}
-        {itemcards?.map((item) => (
-          <div
-            key={item?.card?.info?.id || item?.dish?.info?.id}
-            className="text-sm text-gray-700 mb-5"
-          >
-            {/* item?.card?.info? item?.dish?.info? dish is connected with carousel and card is connected with itemcard */}
+        
 
-            <div className="flex flex-col md:flex-row items-center p-4 rounded-md shadow-md justify-center gap-5">
-              <div className=" w-44 mr-2">
-                <img
-                  src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/d4053b0cbff8d0dbf5769c5a603e5060"
-                  className="rounded-md w-full h-auto"
-                />
-              </div>
+        {/* manu item - accordian categories */}
 
-              <div className="md:w-2/3 flex flex-col gap-2 w-96">
-                <div className="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 text-green-500"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <div className="text-xl font-bold">
-                    {item?.card?.info?.name ||
-                      item?.dish?.info?.name ||
-                      "No menu items here"}
-                  </div>
-                </div>
-                <p className="text-lg font-semibold">
-                  {item?.card?.info?.price / 100 ||
-                    item?.dish?.info?.price / 100}{" "}
-                  Rs
-                </p>
-                <p className="text-gray-500">20% OFF USE TRYNEW</p>
-                <p className="text-gray-600">
-                  {item?.card?.info?.ratings || item?.dish?.info?.ratings}
-                </p>
-                <div className="flex items-end justify-end">
-                  <button className="bg-red-500 hover:bg-red-600 text-white w-36 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    ADD
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        {categories.map((category) => (
+          <ReastaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/>
         ))}
+        
       </div>
     </div>
   );

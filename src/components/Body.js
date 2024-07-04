@@ -12,7 +12,7 @@ const Body = () => {
 
   const [filteredRestaurant, setfilteredRestaurant] = useState([]);
 
-  console.log(resList);
+  // console.log(resList);
   useEffect(() => {
     fetchData();
   }, []);

@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
-import Restaurantcard, { withpromotedLabel } from "./ReataurantCard";
+import React, { useState, useEffect, lazy } from "react";
+import Restaurantcard,{ withpromotedLabel } from "./ReataurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
+// const Restaurantcard = lazy(()=>import("./ReataurantCard"))
+// const { withpromotedLabel } = lazy(()=>import("./ReataurantCard"))
+
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -15,6 +19,7 @@ const Body = () => {
   // console.log(resList);
   useEffect(() => {
     fetchData();
+    
   }, []);
 
   const fetchData = async () => {
@@ -39,7 +44,6 @@ const Body = () => {
       console.error("Error fetching data:", error);
     }
   };
-
   const onlineStatus = useOnlineStatus();
 
   if (onlineStatus === false)
@@ -50,6 +54,7 @@ const Body = () => {
       </div>
     );
 
+    
   if (resList.length === 0) {
     return (
       <div>
@@ -57,11 +62,9 @@ const Body = () => {
       </div>
     );
   }
-
-
   return (
-    <div className=" body px-32 ">
-      <div className="body-header">
+    <div className="body px-32 ">
+      <div className="flex justify-between items-center">
         <div className="flex my-10">
           <input
             type="text"
@@ -94,17 +97,29 @@ const Body = () => {
         >
           Top Rated Reataurant
         </button>
+        <button
+          className="p-3 px-7 w-auto h-14 ml-5 bg-red-500 text-white rounded-xl text-md active:bg-red-700"
+          onClick={() => {
+            
+            const list = resList.sort((a, b) => a.info.sla.deliveryTime - b.info.sla.deliveryTime);
+            setfilteredRestaurant([...list]);
+
+            console.log(list)
+          }}
+        >
+          
+          Delivery Time - low to high
+        </button>
       </div>
 
       <div className="flex justify-between flex-wrap ">
         {filteredRestaurant.map((restaurant) => (
-          
           <Link
             key={restaurant.info.id}
             to={"/restaurant/" + restaurant.info.id}
           >
             {restaurant.info.promoted ? (
-              <RestaurantCardPromoted resdata={restaurant.info}/>
+              <RestaurantCardPromoted resdata={restaurant.info} />
             ) : (
               <Restaurantcard resdata={restaurant.info} />
             )}

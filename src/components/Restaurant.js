@@ -1,12 +1,18 @@
-import { useEffect, useState } from "react"; //Named exports are specific functions, objects, or variables that are exported from a module.
+import { useEffect, useState , lazy} from "react"; //Named exports are specific functions, objects, or variables that are exported from a module.
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantManu from "../utils/useRestaurantManu";
-import ReastaurantCategory from "./RestaurantCategory";
+// import ReastaurantCategory from "./RestaurantCategory";
+
+const ReastaurantCategory = lazy(()=> import("./RestaurantCategory"))
+// const { useRestaurantManu } = lazy(()=> import("../utils/useRestaurantManu"))
+
 
 const Reastaurant = () => {
   const { resId } = useParams();
   const resinfo = useRestaurantManu(resId);
+
+  const [showIndex, setShowIndex] = useState(null);
 
   const cardInfo = resinfo?.cards[2].card.card.info;
   const itemcards =
@@ -22,6 +28,7 @@ const Reastaurant = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
+ 
   if (!cardInfo) {
     return <Shimmer />;
   }
@@ -79,14 +86,19 @@ const Reastaurant = () => {
         <div className=" font-medium text-2xl flex justify-center pb-5 border-b-2 mb-5">
           Menu
         </div>
-        
 
         {/* manu item - accordian categories */}
 
-        {categories.map((category) => (
-          <ReastaurantCategory key={category?.card?.card?.title} data={category?.card?.card}/>
+        {categories.map((category, index) => (
+          <ReastaurantCategory
+            key={category?.card?.card?.title}
+            data={category?.card?.card}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => {
+              setShowIndex(showIndex === index ?null :index);
+            }}
+          />
         ))}
-        
       </div>
     </div>
   );

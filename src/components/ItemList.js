@@ -1,7 +1,15 @@
 import React from "react";
 import { CDN_URL } from "../utils/constant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+    //whenever this is called then it's create payload inside it
+  };
   return (
     <div>
       {items.map((item) => (
@@ -11,7 +19,9 @@ const ItemList = ({ items }) => {
         >
           <div className="">
             <img
-              src={CDN_URL + item?.card?.info?.imageId || item?.dish?.info?.imageId}
+              src={
+                CDN_URL + item?.card?.info?.imageId || item?.dish?.info?.imageId
+              }
               className="rounded-md w-56 h-40"
             />
           </div>
@@ -47,7 +57,10 @@ const ItemList = ({ items }) => {
               Rating
             </p>
             <div className="flex items-end justify-end">
-              <button className="bg-red-500 hover:bg-red-600 text-white w-28 font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+              <button
+                className="bg-red-500 hover:bg-red-600 text-white w-28 font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                onClick={()=> handleAddItem(item)} //do not write like that handleAddItem(item) this will be called function but we want to call back function
+              >
                 ADD
               </button>
             </div>

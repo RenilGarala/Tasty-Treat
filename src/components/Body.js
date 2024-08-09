@@ -73,7 +73,13 @@ const Body = () => {
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
+
+              const filteredRestro = resList.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setfilteredRestaurant(filteredRestro);
             }}
+           
           />
           <button
             className="p-3 w-28 h-14 ml-5 bg-red-500 text-white rounded-e-xl text-md active:bg-red-700"
@@ -95,7 +101,7 @@ const Body = () => {
             setfilteredRestaurant(list);
           }}
         >
-          Top Rated Reataurant
+          Top Rated Restaurant
         </button>
         <button
           className="p-3 px-7 w-auto h-14 ml-5 bg-red-500 text-white rounded-xl text-md active:bg-red-700"

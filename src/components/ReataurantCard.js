@@ -2,7 +2,7 @@ import React from "react";
 import { CDN_URL } from "../utils/constant";
 
 const RestaurantCard = ({ resdata }) => {
-  // console.log(resdata);
+  console.log(resdata);
   const { name, avgRating, cuisines, costForTwo, cloudinaryImageId } = resdata;
 
   return (
@@ -40,7 +40,7 @@ export const withpromotedLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div className="group">
-        <label className="group-hover:scale-95 group-hover:ml-1 group-hover:mt-2 absolute px-1 py-1 bg-black text-white text-sm z-10">Promoted</label>
+        <label className="group-hover:scale-95 group-hover:ml-1 group-hover:mt-2 absolute px-1 py-1 bg-black text-white text-sm z-10 ">Promoted</label>
         <RestaurantCard {...props}/>
       </div>
     );

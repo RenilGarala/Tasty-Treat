@@ -16,7 +16,7 @@ const Header = () => {
   const cartItems=useSelector((store)=> store.cart.items);//specify the what possion to select in the cart
 
   return onlineStatus ?  (
-    <div className="flex justify-between items-center py-6 px-16 p p-4 bg-white shadow-md shadow-red-100">
+    <div className="flex justify-between w-screen sticky top-0 items-center py-6 px-16 p p-4 bg-white shadow-md shadow-red-100 z-20">
     <div className="flex items-center">
       {/* <img className="h-8 w-8 mr-2" src={LOGO_URL} alt="Logo" /> */}
       <div className="text-2xl font-bold">Tasty<span className="text-red-500">Treat</span></div>

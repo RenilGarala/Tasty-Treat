@@ -1,3 +1,5 @@
+// this testing is for my learning purpose
+
 import {sum} from "../sum";
 
 test("check sum of 2 positive numbers",()=>{

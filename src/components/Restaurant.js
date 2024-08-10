@@ -29,7 +29,7 @@ const Reastaurant = () => {
     );
 
  
-  if (!cardInfo) {
+  if (!cardInfo) { 
     return <Shimmer />;
   }
 

@@ -67,11 +67,13 @@ const Body = () => {
       <div className="flex justify-between items-center">
         <div className="flex my-10">
           <input
+            data-testid = "searchinput"
             type="text"
             className="p-3 pl-18 w-80 shadow-md text-md rounded-s-xl"
             placeholder="Search"
             value={searchText}
             onChange={(e) => {
+              
               setSearchText(e.target.value);
 
               const filteredRestro = resList.filter((res) =>
@@ -97,7 +99,7 @@ const Body = () => {
         <button
           className="p-3 px-7 w-auto h-14 ml-5 bg-red-500 text-white rounded-xl text-md active:bg-red-700"
           onClick={() => {
-            const list = resList.filter((res) => res.info.avgRating > 4.5);
+            const list = resList.filter((res) => res.info.avgRating > 4.4);
             setfilteredRestaurant(list);
           }}
         >

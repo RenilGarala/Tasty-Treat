@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-// import About from "./components/About";
-// import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Reastaurant from "./components/Restaurant";
 import userContext from "./utils/userContext";
@@ -12,8 +10,6 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Card from "./components/Cart";
 
-const About = lazy(() => import("./components/About"));
-const Contact = lazy(() => import("./components/Contact"));
 // const Error = lazy(()=> import("./components/Error"));
 // const Reastaurant = lazy(()=> import("./components/Restaurant"));
 
@@ -48,22 +44,6 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body />,
-      },
-      {
-        path: "/about",
-        element: (
-          <Suspense fallback={<div>Loading....</div>}>
-            <About />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/contact",
-        element: (
-          <Suspense fallback={<div>Loading....</div>}>
-            <Contact />
-          </Suspense>
-        ),
       },
       {
         path: "/restaurant/:resId", //resid change according to restaurant

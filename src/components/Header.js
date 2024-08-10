@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const [btnName, setBtnName] = useState("Log IN");
   const onlineStatus =useOnlineStatus();
-  const {loggedInUser}=useContext(userContext);
+  // const {loggedInUser}=useContext(userContext);
 
   //selector hook is come from react/redux library
   //when cart item is update the cart is also update
@@ -24,8 +24,6 @@ const Header = () => {
     <div className="flex items-center gap-7">
       <ul className="flex space-x-6 gap-5">
         <li><Link className="text-lg text-gray-700 hover:text-red-500" to="/">Home</Link></li>
-        <li><Link className="text-lg text-gray-700 hover:text-red-500 " to="/About">About</Link></li>
-        <li><Link className="text-lg text-gray-700 hover:text-red-500" to="/Contact">Contact</Link></li>
         <li><Link className="text-lg text-gray-700 hover:text-red-500" to="/Cart">Cart - ({cartItems.length})</Link></li>
       </ul>
       <button
@@ -38,9 +36,9 @@ const Header = () => {
       >
         {btnName}
       </button>
-      <ul>
+      {/* <ul>
         <li>{loggedInUser}</li>
-      </ul>
+      </ul> */}
     </div>
   </div>
   

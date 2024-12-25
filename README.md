@@ -8,22 +8,19 @@ A modern and responsive food ordering application built with React. This app all
 - **Dynamic Menu**: Browse a variety of food items with detailed descriptions and images.
 - **Order Customization**: Add items to the cart, adjust quantities, and customize orders.
 - **Cart Management**: View and edit cart contents before checkout.
-- **Checkout System**: Secure and smooth checkout process with payment options.
 
 ## Tech Stack
 
 - **Frontend**: React.js, React Router, Context API (or Redux for state management)
 - **Styling**: Tailwind CSS (or any other CSS framework/library you used)
-- **Backend**: [Your backend stack, e.g., Node.js, Express.js, Firebase] *(if applicable)*
-- **Database**: [Database, e.g., MongoDB, Firebase] *(if applicable)*
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/food-ordering-app.git
-   cd food-ordering-app
+   git clone https://github.com/RenilGarala/Tasty-Treat.git
+   cd Tasty-Treat
    ```
 
 2. Install dependencies:
@@ -45,12 +42,8 @@ A modern and responsive food ordering application built with React. This app all
 ```plaintext
 src/
 ├── components/       # Reusable UI components (e.g., Navbar, Footer, Cart, etc.)
-├── pages/            # Pages for different views (e.g., Home, Menu, Checkout, etc.)
-├── assets/           # Static assets (e.g., images, icons)
-├── context/          # Context API files for state management (if used)
-├── styles/           # CSS/SCSS files (or Tailwind configuration)
+├── utils/
 └── App.js            # Main app component
-└── index.js          # Entry point of the app
 ```
 
 ## Scripts
@@ -96,16 +89,12 @@ Contributions are welcome! Feel free to fork this repository and submit a pull r
 
 5. Open a pull request.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ## Contact
 
 For any inquiries or issues, feel free to reach out at:
 
-- **Email**: your-email@example.com
-- **GitHub**: [your-username](https://github.com/your-username)
+- **Email**: renilgarala360004@gmail.com
+- **GitHub**: [your-username](https://github.com/RenilGarala)
 
 ---
 

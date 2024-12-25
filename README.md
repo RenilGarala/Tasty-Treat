@@ -94,7 +94,7 @@ Contributions are welcome! Feel free to fork this repository and submit a pull r
 For any inquiries or issues, feel free to reach out at:
 
 - **Email**: renilgarala360004@gmail.com
-- **GitHub**: [your-username](https://github.com/RenilGarala)
+- **GitHub**: [Renil Garala](https://github.com/RenilGarala)
 
 ---
 
